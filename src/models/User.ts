@@ -11,7 +11,7 @@ const UserSchema = new Schema<UserDocument>(
         role: {
             type: String,
             enum: ["superadmin", "admin", "member"],
-            default: "member",
+            default: "superadmin",
         },
         avatar: { type: String, default: "" },
         plan: {
