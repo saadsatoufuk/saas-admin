@@ -1,7 +1,10 @@
 import mongoose, { Schema, Document } from "mongoose";
 import type { IActivityLog } from "@/types";
 
-export interface ActivityLogDocument extends Omit<IActivityLog, "_id">, Document { }
+export interface ActivityLogDocument extends Omit<IActivityLog, "_id" | "userId" | "organizationId">, Document {
+    userId: mongoose.Types.ObjectId;
+    organizationId?: mongoose.Types.ObjectId;
+}
 
 const ActivityLogSchema = new Schema<ActivityLogDocument>(
     {

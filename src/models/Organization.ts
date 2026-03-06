@@ -1,7 +1,10 @@
 import mongoose, { Schema, Document } from "mongoose";
 import type { IOrganization } from "@/types";
 
-export interface OrganizationDocument extends Omit<IOrganization, "_id">, Document { }
+export interface OrganizationDocument extends Omit<IOrganization, "_id" | "ownerId" | "members">, Document {
+    ownerId: mongoose.Types.ObjectId;
+    members: { userId: mongoose.Types.ObjectId; role: string }[];
+}
 
 const OrganizationSchema = new Schema<OrganizationDocument>(
     {

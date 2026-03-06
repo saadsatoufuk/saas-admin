@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Search, X } from "lucide-react";
 
 interface SearchInputProps {
@@ -18,14 +18,14 @@ export function SearchInput({
 }: SearchInputProps) {
     const [query, setQuery] = useState("");
 
-    const debouncedSearch = useCallback(
-        (() => {
+    const debouncedSearch = useMemo(
+        () => {
             let timer: NodeJS.Timeout;
             return (value: string) => {
                 clearTimeout(timer);
                 timer = setTimeout(() => onSearch(value), debounceMs);
             };
-        })(),
+        },
         [onSearch, debounceMs]
     );
 

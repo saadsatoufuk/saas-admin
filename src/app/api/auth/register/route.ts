@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
         });
 
         // Create user
-        const user = await User.create({
+        await User.create({
             _id: userId,
             name,
             email,

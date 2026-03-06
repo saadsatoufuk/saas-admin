@@ -1,7 +1,10 @@
 import mongoose, { Schema, Document } from "mongoose";
 import type { IInvitation } from "@/types";
 
-export interface InvitationDocument extends Omit<IInvitation, "_id">, Document { }
+export interface InvitationDocument extends Omit<IInvitation, "_id" | "organizationId" | "invitedBy">, Document {
+    organizationId: mongoose.Types.ObjectId;
+    invitedBy: mongoose.Types.ObjectId;
+}
 
 const InvitationSchema = new Schema<InvitationDocument>(
     {

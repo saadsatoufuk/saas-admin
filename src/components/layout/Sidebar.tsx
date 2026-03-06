@@ -62,6 +62,7 @@ export function Sidebar({ userRole, siteName = "مشروعي", logoUrl, onSignOu
             {/* Logo */}
             <div className="flex items-center gap-3 px-4 h-16 border-b border-border">
                 {logoUrl ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
                     <img src={logoUrl} alt={siteName} className="w-8 h-8 rounded-lg object-cover" />
                 ) : (
                     <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">

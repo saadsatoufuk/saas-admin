@@ -1,7 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
 import type { INotification } from "@/types";
 
-export interface NotificationDocument extends Omit<INotification, "_id">, Document { }
+export interface NotificationDocument extends Omit<INotification, "_id" | "userId">, Document {
+    userId: mongoose.Types.ObjectId;
+}
 
 const NotificationSchema = new Schema<NotificationDocument>(
     {
